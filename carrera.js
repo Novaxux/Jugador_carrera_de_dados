@@ -1,5 +1,5 @@
 class Dado {
-    TirarDado(){
+    Tirar(){
         return Math.ceil(Math.random()*6)
     }
 }
@@ -21,8 +21,8 @@ class Tablero {
 
     
     avanzar(dado){
-        this.casillaJ1 += dado.TirarDado()
-        this.casillaJ2 += dado.TirarDado()        
+        this.casillaJ1 += dado.Tirar()
+        this.casillaJ2 += dado.Tirar()        
 
         // console.log(`El jugador ${this.jugador1.nombre} avanzo a la casilla ${this.casillaJ1} , y el  jugador ${this.jugador2.nombre} avanzo a la casilla ${this.casillaJ2} `)
     }
@@ -36,20 +36,13 @@ let jugador2 = new Jugador('Pedro')
 
 let tableroCorredor = new Tablero(jugador1,jugador2)
 
-// let i = tableroCorredor.casillaJ1
-// let f = tableroCorredor.casillaJ2
 
 
-// tableroCorredor.avanzar(dado)
-
-for (; 
-    tableroCorredor.casillaJ1 < tableroCorredor.casillas && 
-    tableroCorredor.casillaJ2 < tableroCorredor.casillas ; 
-    tableroCorredor.avanzar(dado)){
-
-    console.log(`El jugador ${tableroCorredor.jugador1.nombre} avanzo a la casilla ${tableroCorredor.casillaJ1}, y el jugador ${tableroCorredor.jugador2.nombre} avanzo a la casilla ${tableroCorredor.casillaJ2}`);
-
-}
+while(tableroCorredor.casillaJ1 < tableroCorredor.casillas && 
+    tableroCorredor.casillaJ2 < tableroCorredor.casillas){
+        tableroCorredor.avanzar(dado)
+        console.log(`El jugador ${tableroCorredor.jugador1.nombre} avanzo a la casilla ${tableroCorredor.casillaJ1}, y el jugador ${tableroCorredor.jugador2.nombre} avanzo a la casilla ${tableroCorredor.casillaJ2}`);
+    }
 
 if (tableroCorredor.casillaJ2 >= tableroCorredor.casillas &&
     tableroCorredor.casillaJ1 < tableroCorredor.casillas)
